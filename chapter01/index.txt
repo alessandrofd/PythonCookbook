@@ -1,0 +1,33 @@
+Recipe 1.1. Unpacking a Sequence into Separate Values
+
+    Problem: You have an N-element tuple or sequence that you would like to unpack into a collection of N variables.
+
+    Solution: Any sequence (or iterable) can be unpacked into variables using a simples assignment operations. The only
+        requirement is that the number of variables and structure match the sequence.
+
+Recipe 1.2. Unpacking Elements form Iterables of Arbitrary Length
+
+    Problem: You need to unpack N elements from a iterable, but the iterable may be longer than N elements, causing a
+        "too many values to unpack" exception.
+
+    Solution: Python "star expressions" can be used to address this problem.
+
+Recipe 1.3. Keeping the Last N Items
+
+    Problem: You want to keep a limited history of the last few items seen during iteration or during some other kind
+        of processing.
+
+    Solution: Keeping a limited history is a perfect example for a collections.deque.
+
+Recipe 1.4. Finding the Largest or Smallest N Items
+
+    Problem: You want to make a list of the largest or smallest N items in a collection
+
+    Solution: The heapq module has two functions - nlargest() and nsmallest() - that do exactly what you want.
+
+Recipe 1.5. Implementing a Priority Queue
+
+    Problem: You want to implement a queue that sorts items by a given priority and always returns the item with the
+        highest priority on each pop operation.
+
+    Solution: Use the heapq module to implement a simple priority queue.
