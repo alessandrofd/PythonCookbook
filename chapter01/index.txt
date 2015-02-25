@@ -31,3 +31,18 @@ Recipe 1.5. Implementing a Priority Queue
         highest priority on each pop operation.
 
     Solution: Use the heapq module to implement a simple priority queue.
+
+Recipe 1.6. Mapping Keys to Multiple Values in a Dictionary
+
+    Problem: You want to make a dictionary that maps keys to more than one value (a so-called "multidict").
+
+    Solution: A dictionary is a mapping where each key is mapped to a single value. If you want to map keys to multiple
+        values, you need to store the multiple values in another container such as a list or set.
+
+Recipe 1.7. Keeping Dictionaries in Order
+
+    Problem: You want to create a dictionary, and you also want to control the order of items when
+        iterating or serializing.
+
+    Solution: To control the order of items in a dictionary, you can use an OrderedDict from the
+        collections module. It exactly preserves the original insertion order of data when iterating.
