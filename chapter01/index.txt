@@ -46,3 +46,8 @@ Recipe 1.7. Keeping Dictionaries in Order
 
     Solution: To control the order of items in a dictionary, you can use an OrderedDict from the
         collections module. It exactly preserves the original insertion order of data when iterating.
+
+Recipe 1.8. Calculating with Dictionaries
+
+    Problem: You want to perform various calculations (e.g., minimum value, maximum value, sorting,
+        etc.) on a dictionary of data.
