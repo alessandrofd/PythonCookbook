@@ -51,3 +51,15 @@ Recipe 1.8. Calculating with Dictionaries
 
     Problem: You want to perform various calculations (e.g., minimum value, maximum value, sorting,
         etc.) on a dictionary of data.
+
+Recipe 1.9. Finding Commonalities in Two Dictionaries
+
+    Problem: You have two dictionaries and want to find out what they might have in common (same keys, same values, etc).
+
+Recipe 1.10. Removing Duplicates from a Sequence while Maintaining Order
+
+    Problem: You want to eliminate the duplicate values in a sequence, but preserve the order of the remaining items.
+
+Recipe 1.11. Naming a Slice
+
+    Problem: Your program has become as unreadable mess of hardcoded slice indices and you want to clean it up.
