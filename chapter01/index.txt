@@ -63,3 +63,18 @@ Recipe 1.10. Removing Duplicates from a Sequence while Maintaining Order
 Recipe 1.11. Naming a Slice
 
     Problem: Your program has become as unreadable mess of hardcoded slice indices and you want to clean it up.
+
+Recipe 1.12 Determining the Most Frequently Occurring Items in a Sequence
+
+    Problem: You have a sequence of items, and you'd like to determine the most frequently occurring items in the
+        sequence.
+
+    Solution: The collections.Counter class is designed for just such a problem. It even comes with a handy most_common()
+        method that will give you the answer.
+
+Recipe 1.13. Sorting a List of Dictionaries by a Common Key
+
+    Problem: You have a list of dictionaries and you would like to sort the entries according to one or more of the
+        dictionary values.
+
+    Solution: Sorting this type of structure is easy using the operator module's itemgetter function.
