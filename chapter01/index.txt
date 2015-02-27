@@ -92,3 +92,9 @@ Recipe 1.15. Grouping Records Together Based on a Field
         the value of a particular field, such as date.
 
     Solution: The itertools.groupby() function is particularly useful for grouping data together like this.
+
+Recipe 1.16. Filtering Sequence Elements
+
+    Problem: You have data inside of a sequence, and need to extract values or reduce the sequence using some criteria.
+
+    Solution: The easiest way to filter sequence data is often to use a list comprehension.
