@@ -98,3 +98,33 @@ Recipe 1.16. Filtering Sequence Elements
     Problem: You have data inside of a sequence, and need to extract values or reduce the sequence using some criteria.
 
     Solution: The easiest way to filter sequence data is often to use a list comprehension.
+
+Recipe 1.17. Extracting a Subset of a Dictionary
+
+    Problem: You want to make a dictionary that is a subset of another dictionary.
+
+    Solution: This is easily accomplished using dictionary comprehension.
+
+Recipe 1.18. Mapping Names to Sequence Elements
+
+    Problem: You have code that accesses list or tuple elements by position, but this makes the code somewhat difficult
+        to read at times. You'd also like to be less dependent on position in the structure, by accessing the elements
+        by name.
+
+    Solution: collections.nametuple() provides these benefits, while adding minimal overhead over using a normal tuple
+        object.
+
+Recipe 1.19. Transforming and Reducing Data at the Same Time
+
+    Problem: You need to execute a reduction function (e.g., sum(), min(), max()), but first need to transform and
+        filter data.
+
+    Solution: A very elegant way to combine a data reduction and a transformation is to use a generator-expression
+        argument.
+
+Recipe 1.20. Combining Multiple Mappings into a Single Mapping
+
+     Problem: You have multiple dictionaries or mappings that you want to logically combine into a single mapping to
+        perform certain operations, such as looking up values or checking for the existence of keys.
+
+     Solution: An easy way to do this is to use the ChainMap class from the collections module.
