@@ -17,3 +17,19 @@ Recipe 3.3. Formatting Numbers for Output
         separator, and other details.
 
     Solution: To format a single number for output, use the built-in format() function.
+
+Recipe 3.4. Working with Binary, Octal, and Hexadecimal Integers
+
+    Problem: You need to convert or output integers represented by binary, octal, or hexadecimal
+        digits.
+
+    Solution: To convert an integer into a binary, octal, or hexadecimal text string, use the bin(),
+        oct(), or hex() functions, respectively.
+
+Recipe 3.5. Packing and Unpacking Large Integers from Bytes
+
+    Problem: You have a byte string and you need to unpack it into an integer value. Alternatively,
+        you need to convert a large integer back into a byte string.
+
+    Solution: To interpret bytes as an integer, use int.from_bytes(), and specify the byte ordering.
+
