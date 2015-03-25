@@ -13,7 +13,7 @@ print((a + b) == 6.3)  # Output: False
 """
 These errors are a "feature" of the underlying CPU and the IEEE 754 arithmetic performed by its floating-point unit.
 Since Python's float data type stores data using the native representation, there's nothing you can do to avoid such
-errors if you write you code using float instances.
+errors if you write your code using float instances.
 
 If you want more accuracy (and are willing to give up some performance), you can use the decimal module:
 """
@@ -78,7 +78,7 @@ However, for other algorithms, you really need to study the algorithm and unders
 
 All of this said, the main use of the decimal module is in programs involving things such as finance. In such programs,
 it is extremely annoying to have small errors creep into the calculation. Thus, decimal provides a way to avoid that. It
-is also common to encounter Decimal objects when Python interfaces wiht databases - again, specially when accessing
+is also common to encounter Decimal objects when Python interfaces with databases - again, specially when accessing
 financial data.
 """
 
