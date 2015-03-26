@@ -42,3 +42,11 @@ Recipe 3.6. Performing Complex-Value Math
 
     Solution: Complex number can be specified using the complex(real, imag) function or by floating-point numbers with a
         j suffix.
+
+Recipe 3.7. Working with Infinity and NaNs
+
+    Problem: You need to create or test for the floating-point values of infinity, negative infinity, or NaN (not a
+        number).
+
+    Solution: Python has no special syntax to represent these floating-point values, but they can be created using
+        float().
