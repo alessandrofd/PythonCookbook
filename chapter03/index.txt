@@ -24,3 +24,21 @@ Recipe 3.4. Working with Binary, Octal, and Hexadecimal Integers
 
     Solution: To convert an integer into a binary, octal, or hexadecimal text string, use the bin(), oct(), or hex()
         functions, respectively.
+
+Recipe 3.5. Packing and Unpacking Large Integers from Bytes
+
+    Problem: You have a byte string and you need to unpack it into an integer value. Alternatively, you need to convert
+        a large integer back into a byte string.
+
+    Solution: To interpret the bytes as an integer, use int.from_bytes(), and specify the byte ordering. To convert a
+        large integer value back into a byte string, use the int.to_bytes() method, specifyting the number of bytes and
+        the byte order.
+
+Recipe 3.6. Performing Complex-Value Math
+
+    Problem: You code for interacting with the latest web authentication scheme has encountered a singularity and your
+        only solution is to go around it in the complex plane. Or maybe you just need to perform some calculations
+        using complex numbers.
+
+    Solution: Complex number can be specified using the complex(real, imag) function or by floating-point numbers with a
+        j suffix.
