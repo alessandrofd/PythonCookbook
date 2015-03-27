@@ -50,3 +50,26 @@ Recipe 3.7. Working with Infinity and NaNs
 
     Solution: Python has no special syntax to represent these floating-point values, but they can be created using
         float().
+
+Recipe 3.8. Calculating with Fractions
+
+    Problem: You have entered a time machine and suddenly find yourself working on elementary-level homework problems
+        involving fractions. Or perhaps you're writing code to make calculations involving measurements made in your
+        wood shop.
+
+    Solution: The fractions module can be used to perform mathematical calculations involving fractions.
+
+Recipe 3.9. Calculating with Large Numerical Arrays
+
+    Problem: You need to perform calculations on large numerical datasets, such as arrays or grids
+
+    Solution: For any heavy computation involving arrays, use the NumPy library. The major feature of NumPy is that it
+        gives Python an array object that is much more efficient and better suited for mathematical calculation than a
+        standard Python list.
+
+Recipe 3.10. Performing Matrix and Linear Algebra Calculations
+
+     Problem: You need to perform matrix and linear algebra operations, such as matrix multiplication, finding
+        determinants, solving linear equations, and so on.
+
+     Solution: The NumPy library has a matrix object that can be used for this purpose.
