@@ -73,3 +73,17 @@ Recipe 3.10. Performing Matrix and Linear Algebra Calculations
         determinants, solving linear equations, and so on.
 
      Solution: The NumPy library has a matrix object that can be used for this purpose.
+
+Recipe 3.11. Picking Things at Random
+
+     Problem: You want to pick random items out of a sequence or generate random numbers.
+
+     Solution: The random module has various functions for random numbers and picking random items.
+
+Recipe 3.12. Converting Days to Seconds, and Other Basic Time Conversions
+
+     Problem: You have code that needs to perform simple time conversions, like days to seconds,
+        hours to minutes, and so on.
+
+     Solution: To perform conversions and arithmetic involving different units of time, use the
+        datetime module.
