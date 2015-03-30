@@ -36,6 +36,22 @@ delimiters = fields[1::2] + ['']
 print(values)
 print(delimiters)
 
+# Reform the line using the same delimiters
+print(''.join(v+d for v, d in zip(values, delimiters)))
+
+"""
+If you don't want the separator characters in the result, but still need to use parentheses to group parts of the
+regular expression pattern, make sure you use a noncapture group, specifeid as (?:...). For example:
+"""
+
+fields = re.split(r'(?:,|;|\s)\s*', line)
+print(fields)
+
+
+
+
+print("### SLICING PYTHON STRINGS ###")
+
 """
 From Python Central - http://www.pythoncentral.io/cutting-and-slicing-strings-in-python/
 
@@ -69,13 +85,52 @@ print(s[4:])
 print(s[:4])
 print(s[:])
 
-# Reform the line using the same delimiters
-print(''.join(v+d for v, d in zip(values, delimiters)))
+"""
+If you're still struggling to get your head around the fact that, for example, s[0:8] returns everything up to, **but
+not including**, the character at position 8, it may help if you roll this in your head a bit: for any value of index,
+n, that you choose, the value of s[:n] + s[n:] will always be the same as the original target string. If the indexing
+mechanism were inclusive, the character at position n would appear twice.
+"""
+
+print(s[6])
+print(s[:6] + s[6:])
 
 """
-If you don't want the separator characters in the result, but still need to use parentheses to group parts of the
-regular expression pattern, make sure you use a noncapture group, specifeid as (?:...). For example:
+Skipping character while splitting Python strings
+
+The final variation on the square-bracket syntax is to add a third parameter, which specifies the 'stride', or how many
+characters you want to move forward after each character is retrieved from the original string. The first retrieved
+character always corresponds to the index before the colon; but thereafter, the pointer moves forward however many
+characters you specify as your stride, and retrieves the character at that position. And so on, until the ending index
+is reached or exceeded. If, as in the cases we've met so far, the parameter is omitted, it defaults to 1, so that every
+character in the specified segment is retrieved. An example makes this clearer.
 """
 
-fields = re.split(r'(?:,|;|\s)\s*', line)
-print(fields)
+print(s[4:8])
+print(s[4:8:1])  # 1 is the default value anyway, so same result
+print(s[4:8:2])  # Return a character, then move forward 2 positions, etc
+
+"""
+You can specify a negative stride too. As you might expect, this indicates that you want Python to go backwards when
+retrieving characters
+"""
+
+print(s[8:4:-1])
+
+"""
+As you can see, since we're going backwards, it makes sense for the starting index to be higher than the ending index
+(otherwise nothing would be returned).
+"""
+
+print(s[4:8:-1])
+
+"""
+For that reason, if you specify a negative stride, but omit the first or second index, Python defaults the missing value
+to whatever makes sense in the circumstances: the start index to the end of the string, and the end index to the
+beginning of the string. I know it can make your head ache thinking about it, but Python knows what it's doing.
+"""
+
+print(s[4::-1])  # End index defaults to the beginning of the string
+print(s[:4:-1])  # Beginning index defaults to the end of the string
+
+print("### SLICING PYTHON STRINGS ###")
