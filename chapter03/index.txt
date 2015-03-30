@@ -87,3 +87,36 @@ Recipe 3.12. Converting Days to Seconds, and Other Basic Time Conversions
 
      Solution: To perform conversions and arithmetic involving different units of time, use the
         datetime module.
+
+Recipe 3.13. Determining Last Friday's Date
+
+     Problem: You want a general solution for finding a date for the last occurrence of a day of the
+        week. Last Friday, for example.
+
+     Solution: Python's datetime module has utility functions and classes to help perform calculations
+        like this.
+
+Recipe 3.14. Finding the Date Range for the Current Month
+
+     Problem: You have some code that needs to loop over each date in the current month, and want
+        an efficient way to calculate that range.
+
+     Solution: Looping over the dates doesn't require building a list of all the dates ahead of time.
+        You can just calculate the starting and stopping date in the range, then use datetime.timedelta
+        objects to increment the date as you go.
+
+Recipe 3.15. Converting Strings into Datetimes
+
+    Problem: Your application receives temporal data in string format, but you want to convert those
+        strings into datetime objects in order to perform nonstring operations on them.
+
+    Solution: Python's standard datetime module is typically the easy solution for this.
+
+Recipe 3.16. Manipulating Dates Involving Time Zones
+
+    Problem: You had a conference call schedule for December 21, 2012, at 9:30 a.m. in Chicago. At
+        what local time did your friend in Bangalore, India, have to show up to attend?
+
+    Solution: For almost any problem involving time zones, you should use the pytz module. This
+        package provides the Olson time zone database, which is the de facto standard for time zone
+        information found in many languages and operating systems.
