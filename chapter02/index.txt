@@ -1,0 +1,8 @@
+Recipe 2.1. Splitting Strings on Any of Multiple Delimiters
+
+    Problem: You need to split a string into fields, but the delimiters (and spacing around them) aren't consistent
+        throughout the string.
+
+    Solution: The split() method of string objects is really meant for very simple case, and does not allow for multiple
+        delimiters or account for possible whitespace around the delimiters. In cases when you need a bit more
+        flexibility, use the re.split() method.
