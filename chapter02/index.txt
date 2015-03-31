@@ -6,3 +6,10 @@ Recipe 2.1. Splitting Strings on Any of Multiple Delimiters
     Solution: The split() method of string objects is really meant for very simple case, and does not allow for multiple
         delimiters or account for possible whitespace around the delimiters. In cases when you need a bit more
         flexibility, use the re.split() method.
+
+Recipe 2.4. Matching and Searching for Text Patterns
+
+    Problem: You want to match or search text for a specific pattern.
+
+    Solution: If the text you're trying to match is a simple literal, you can often just use the
+        basic string methods, such as str.find(), str.endswith(), str.startswith(), or similar.
