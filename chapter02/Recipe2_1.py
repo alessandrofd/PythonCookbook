@@ -39,10 +39,8 @@ print(delimiters)
 # Reform the line using the same delimiters
 print(''.join(v+d for v, d in zip(values, delimiters)))
 
-"""
-If you don't want the separator characters in the result, but still need to use parentheses to group parts of the
-regular expression pattern, make sure you use a noncapture group, specifeid as (?:...). For example:
-"""
+# If you don't want the separator characters in the result, but still need to use parentheses to group parts of the
+# regular expression pattern, make sure you use a noncapture group, specifeid as (?:...). For example:
 
 fields = re.split(r'(?:,|;|\s)\s*', line)
 print(fields)
