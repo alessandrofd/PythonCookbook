@@ -21,3 +21,26 @@ Recipe 2.8. Writing a Regular Expression for Multiline Patterns
 
     Solution: This problem typically arises in patterns that use the dot (.) to match any character but forget to
         account for the fact that it doesn't match newlines. To fix the problem, you can add the support for newlines.
+
+Recipe 2.9. Normalizing Unicode Text to a Standard Representation
+
+    Problem: You're working with Unicode strings, but need to make sure that all of the strings have the same underlying
+            representation.
+
+    Solution: You can normalize the text into a standard representation using the unicodedata module
+
+Recipe 2.10. Working with Unicode Characters in Regular Expressions
+
+    Problem: You are using regular expressions to process text, but are concerned about handling of Unicode characters.
+
+    Solution: By default, the re module is already programmed with rudimentary knowledge of certain Unicode character
+        classes.
+
+Recipe 2.11. Stripping Unwanted Characters from Strings
+
+    Problem: You want to strip unwanted characters, such as whitespace, from the beginning, end, or middle of a text
+        string.
+
+    Solution: The strip() method can be used to strip characters from the beginning or end of a string. lstrip() and
+        rstrip() perform stripping from the left or right side, respectively. By default, these methods strip whitespace,
+        but other characters can be given.
