@@ -44,3 +44,45 @@ Recipe 2.11. Stripping Unwanted Characters from Strings
     Solution: The strip() method can be used to strip characters from the beginning or end of a string. lstrip() and
         rstrip() perform stripping from the left or right side, respectively. By default, these methods strip whitespace,
         but other characters can be given.
+
+Recipe 2.12. Sanitizing and Cleaning Up Text
+
+    Problem: Some bored script kiddie has entered the text "pýtĥöñ" into a form on your web page and you'd like to clean
+        it up somehow.
+
+    Solution: The problem of sanitizing and cleaning up text applies to a wide variety of problems involving text
+        parsing and data handling. At a very simple level, you might use basic string functions (e.g., str.upper() and
+        str.lower()) to convert text to a standard case. Simple replacements using str.replace() or re.sub() can focus
+        on removing or changing very specific character sequences. You can also normalize text using unicodedata.norma-
+        lize(), as shown in Recipe 2.9.
+
+        However, you might want to take the sanitation process a step further. Perhaps, for example, you want to elimi-
+        nate whole ranges of characters or strip diacritical marks. To do so, you can turn to the overlooked str.trans-
+        late() method.
+
+Recipe 2.13. Aligning Text Strings
+
+    Problem: You need to format text with some sort of alignment applied.
+
+    Solution: For basic alignment of strings, the ljust(), rjust(), and center() methods of strings can be used.
+
+Recipe 2.14. Combining and Concatenating Stings
+
+    Problem: You want to combine many small strings together into a larger sting.
+
+    Solution: If the strings you wish to combine are found in a sequence or iterable, the fastest way to combine them is
+        to use the join() method.
+
+Recipe 2.15. Interpolating Variables in Strings
+
+    Problem: You want to create a string in which embedded variable names are substituted with a string representation
+        of a variable's values.
+
+    Solution: Python has no direct support for simply substituting variable values in strings. However, this feature can
+        be approximated using the format() method of stings.
+
+Recipe 2.16. Reformatting Text to a Fixed Number of Columns
+
+    Problem: You have long strings that you want to reformat so that they fill a user-specified number of columns.
+
+    Solution: Use the textwrap module to reformat text for output.
