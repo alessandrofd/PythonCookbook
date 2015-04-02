@@ -86,3 +86,11 @@ Recipe 2.16. Reformatting Text to a Fixed Number of Columns
     Problem: You have long strings that you want to reformat so that they fill a user-specified number of columns.
 
     Solution: Use the textwrap module to reformat text for output.
+
+Recipe 2.17. Handling HTML and XML Entities in Text
+
+    Problem: You want to replace HTML and XML entities such as &entity; or &#code; with their corresponding text. Alter-
+        natively, you need to produce text, but escape certain characters (e.g., <, >, or &)
+
+    Solution: If you are producing text, replacing special characters such as < or > is relatively easy if you use the
+        html.escape() function.
