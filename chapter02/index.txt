@@ -104,3 +104,9 @@ Recipe 2.19. Writing a Simple Recursive Descent Parser
     Problem: You need to parse a text according to a set of grammar rules and perform actions or build an abstract
         syntax tree representing the input. The grammar is small, so you'd prefer to just write the parser yourself as
         oppose to using some kind of framework.
+
+Recipe 2.20. Performing Text Operations on Byte Strings
+
+    Problem: You want to perform common text operations (e.g., stripping, searching, and repalcements) on byte strings.
+
+    Solution: Byte strings already support most of the same built-in operations as text strings.

@@ -219,4 +219,189 @@ print(e.parse('2 + 3 * 4'))
 print(e.parse('2 + (3 + 4) * 5'))
 print(e.parse('2 + 3 + 4'))
 
+# DISCUSSION
 
+# Parsing is a huge topic that generally occupies students for the first three weeks of a compilers course. If you are
+# seeking background knowledge about grammars, parsing algorithms, and other information, a compilers book is where you
+# should turn. Needless to say, all that cannot be repeated here.
+
+# Nevertheless, the overall idea of writing a recursive descent parser is generally simple. To start, you take every
+# grammar rule and you turn it into a function or method. Thus, if you grammar looks like this:
+
+# expr ::= term { ('+'|'-') term }*
+# term ::= factor { ('*'|'/') factor }*
+# factor ::=  NUM | '(' expr ')'
+
+# You start by turning it into a set of methods like this:
+
+# class ExpressionEvaluator:
+#     ...
+#  def expr(self):
+#     ...
+#  def term(self):
+#     ...
+# def factor(self):
+#     ...
+
+# The task of each method is simple—it must walk from left to right over each part of the grammar rule, consuming tokens
+# in the process. In a sense, the goal of the method is to either consume the rule or generate a syntax error if it gets
+# stuck. To do this, the following implementation techniques are applied:
+
+# • If the next symbol in the rule is the name of another grammar rule (e.g., term or factor), you can simply call the
+# method with the same name. This is the "descent" part of the algorithm—control descends into another grammar rule.
+# Sometimes rules will involve calls to methods that are already executing (e.g., the call to expr in the factor ::=
+# '(' expr ')' rule). This is the "recursive" part of the algorithm.
+
+# • If the next symbol in the rule has to be a specific symbol (e.g., '(' ), you look at the next token and check for an
+# exact match. If it doesn't match, it's a syntax error. The _expect() method in this recipe is used to perform this
+# steps.
+
+# • If the next symbol in the rule could be a few possible choices (e.g., + or -), you have to check the next token for
+# each possibility and advance only if a match is made. This is the purpose of the _accept() method in this recipe. It's
+# kind of like a weaker version of the _expect() method in that it will advance if a match is made, but if not, is simply
+# backs off without raising an error (thus allowing further checks to be made).
+
+# • For grammar rules where there are repeated parts (e.g., such as in the rule expr ::= term { ('+'|'-') term }*), the
+# repetition gets implemented by a while loop. The body of the loop will generally collect or process all of the repeated
+# items until no more are found.
+
+# • Once an entire grammar rule has been consumed, each method returns some kind of result back to the caller. This is
+# how values propagate during parsing. For example, in the expression evaluator, return values will represent partial
+# results of the expression being parsed. Eventually they all get combined together in the topmost grammar rule method
+# that executes.
+
+# Although a simple example has been shown, recursive descent parsers can be used to implement rather complicated
+# parsers. For example, Python code itself is interpreted by a recursive descent parser. If you're so inclined, you can
+# look at the underlying grammar by inspecting the file Grammar/Grammar in the Python source. That said, there are still
+# numerous pitfalls and limitations with making a parser by hand.
+
+# One such limitation of recursive descent parsers is that they can't be written for grammar rules involving any kind of
+# left recursion. For example, suppose you need to translate a rule like this:
+
+# itesm ::= items ',' item
+#         | item
+
+# To do it, you might try to use the items() like this:
+
+# def items(self):
+#     itemsval = self.items()
+#     if itemsval and self._accept(','):
+#         itemsval.append(self.item())
+#     else:
+#         itemsval = [ self.item() ]
+
+# The only problem is that it doesn't work. In fact, it blows up with an infinite recursion error.
+
+# You can also run into tricky issues concerning the grammar rules themselves. For example, you might have wondered
+# whether or not expressions could have been described by this more simple grammar:
+
+# expr ::= factor { ('+'|'-'|'*'|'/') factor }*
+# factor ::= '(' expression ')'
+#          | NUM
+
+# This grammar technically "works", but it doesn't observe the standard arithmetic rules concerning order of evaluation.
+# For example, the expression "3 + 4 + * 5" would get evaluated as "35" instead of the expected result of "23". The use
+# of separate "expr" and "term" rules is there to make evaluation work correctly.
+
+# For really complicated grammars, you are often better off using parsing tools such as PyParsing ou PLY. This is what
+# the expression evaluator code looks like using PLY:
+
+from ply.lex import lex
+from ply.yacc import yacc
+
+# Token list
+tokens = ['NUM', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'LPAREN', 'RPAREN']
+
+# Ignored characters
+t_ignore = '\t\n'
+
+# Token specification (as regex)
+t_PLUS = r'\+'
+t_MINUS = r'-'
+t_TIMES = r'\*'
+t_DIVIDE = r'/'
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
+
+# Token processing functions
+
+def t_NUM(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
+
+# Error handler
+
+def t_error(t):
+    print('Bad character: {!r}'.format(t.value[0]))
+    t.skip(1)
+
+# Build the lexer
+
+lexer = lex()
+
+# Grammar rules and handler functions
+
+def p_expr(p):
+    '''
+    expr : expr PLUS term
+         | expr MINUS term
+    '''
+    if p[2] == '+':
+        p[0] = p[1] + p[3]
+    elif p[2] == '-':
+        p[0] = p[1] - p[3]
+
+def p_expr_term(p):
+    '''
+    expr : term
+    '''
+    p[0] = p[1]
+
+def p_term(p):
+    '''
+    term : term TIMES factor
+         | term DIVIDE factor
+    '''
+    if p[2] == '*':
+        p[0] = p[1] * p[3]
+    elif p[2] == '/':
+        p[0] = p[1] / p[3]
+
+def p_term_factor(p):
+    '''
+    term : factor
+    '''
+    p[0] = p[1]
+
+def p_factor(p):
+    '''
+    factor : NUM
+    '''
+    p[0] = p[1]
+
+def p_factor_group(p):
+    '''
+    factor : LPAREN expr RPAREN
+    '''
+    p[0] = p[2]
+
+def p_error(p):
+    print('Syntax error')
+
+parser = yacc()
+
+# In this code, you'll find that everything is specified at a much higher level. You simply write regular expressions
+# for the tokens and high-level handling functions that execute when various grammar rules are matched. The actual
+# mechanics of running the parser, accepting tokens, and so forth is implemented entirely by the library.
+
+# Here is an example of how the resulting parser object gets used:
+
+print('\n### Using PLY ###\n')
+print(parser.parse('2'))
+print(parser.parse('2+3'))
+print(parser.parse('2+(3+4)*5'))
+
+# If you need a bit more excitement in your programming, writing parsers and compilers can be a fun project. Again, a
+# compilers textbook will have a lot of low-level details underlying theory. However, many fine resources can also be
+# found online. Python's own ast module is also worth a look.
