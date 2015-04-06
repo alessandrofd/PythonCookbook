@@ -5,3 +5,11 @@ Recipe 4.1. Manually Consuming an Iterator
 
     Solution: To manually consume an iterable, use the next() function and write your code to catch the StopIteration
         exception.
+
+Recipe 4.2. Delegating Iteration
+
+    Problem: You have built a custom container object that internally holds a list, tuple, or some other iterable. You
+        would like to make iteration work with your new container.
+
+    Solution: Typically, all you need to do is define a __iter__() method that delegates iteration to the internally
+        held container.
