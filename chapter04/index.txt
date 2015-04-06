@@ -13,3 +13,17 @@ Recipe 4.2. Delegating Iteration
 
     Solution: Typically, all you need to do is define a __iter__() method that delegates iteration to the internally
         held container.
+
+Recipe 4.3. Creating New Iteration Patterns with Generators
+
+    Problem: You want to implement a custom iteration pattern that's different than the usual built-in functions (e.g.,
+        range(), reversed(), etc.).
+
+    Solution: If you want to implement a new kind of iterations pattern, define it using a generator function.
+
+Recipe 4.4. Implementing the Iterator Protocol
+
+    Problem: You are building a custom object on which you would like to support iteration, but would like an easy way
+        to implement the iterator protocol.
+
+    Solution: By far, the easiest way to implement iteration on an object is to use a generator function.
