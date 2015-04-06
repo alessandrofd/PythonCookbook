@@ -27,3 +27,18 @@ Recipe 4.4. Implementing the Iterator Protocol
         to implement the iterator protocol.
 
     Solution: By far, the easiest way to implement iteration on an object is to use a generator function.
+
+Recipe 4.5. Iterating in Reverse
+
+    Problem: You want to iterate in reverse over a sequence.
+
+    Solution: Use the built-in reversed() function.
+
+Recipe 4.6. Defining Generator Function with Extra State
+
+    Problem: You would like to define a generator function, but it involves extra state that you would like to expose to
+        the user somehow.
+
+    Solution: If you want a generator to expose extra stat to the user, don't forget that you can easily implement it as
+        a class, putting the generator function code in the __iter__() method.
+
