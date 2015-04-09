@@ -42,3 +42,9 @@ Recipe 4.6. Defining Generator Function with Extra State
     Solution: If you want a generator to expose extra stat to the user, don't forget that you can easily implement it as
         a class, putting the generator function code in the __iter__() method.
 
+Recipe 4.7. Taking a Slice of an Iterator
+
+    Problem: You want to take a slice of data produced by an iterator, but the normal slicing operator doesn't work.
+
+    Solution: The itertools.isslice() function is perfectly suited for taking slices of iterators and generators
+
